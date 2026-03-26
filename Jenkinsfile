@@ -8,9 +8,15 @@ pipeline {
             }
         }
 
-        stage('Test Run') {
+        stage('Run App (Test)') {
             steps {
                 bat 'node app.js & timeout /t 5'
+            }
+        }
+
+        stage('Verify App') {
+            steps {
+                bat 'curl http://localhost:3000'
             }
         }
     }
